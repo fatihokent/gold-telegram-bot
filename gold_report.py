@@ -33,7 +33,7 @@ NEWS_URL = ("https://news.google.com/rss/search?"
             f"q={NEWS_QUERY}+when:1d&hl=en-US&gl=US&ceid=US:en")
 UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36"
 HOUR_START, HOUR_END = 7, 22           # Europe/Paris
-TZ_NAME = "Europe/Paris"
+TZ_NAME = "Africa/Casablanca"
 DISCLAIMER = (
     "⚠️ <i>Tahlil tiqni automatique li gharad ta3limi/i3lami. "
     "Machi conseil d'investissement. Al qarar dyalek w 3la mas'ouliytek. "
@@ -230,7 +230,7 @@ def tg_send(text):
 
 
 def paris_hour():
-    """Heure locale Europe/Paris (gere ete/hiver), ou None si indisponible."""
+    """Heure locale Africa/Casablanca (gere ete/hiver), ou None si indisponible."""
     try:
         from zoneinfo import ZoneInfo
         return dt.datetime.now(ZoneInfo(TZ_NAME)).hour
@@ -247,7 +247,7 @@ def main():
     if not args.force and not args.dry_run:
         h = paris_hour()
         if h is not None and not (HOUR_START <= h <= HOUR_END):
-            print(f"Hors plage horaire (Paris {h}h). Rien envoye.")
+            print(f"Hors plage horaire (Casablanca {h}h). Rien envoye.")
             return
 
     try:
